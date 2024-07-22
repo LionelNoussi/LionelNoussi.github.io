@@ -16,21 +16,16 @@
     <a id="skip-to-content" href="#content">Skip to the content.</a>
 
     <header class="page-header" role="banner">
-      <h1 class="project-name" href="{{ "/" | relative_url }}">{{ page.title | default: site.title | default: site.github.repository_name }}</h1>
+      <h1 class="project-name"">{{ page.title | default: site.title | default: site.github.repository_name }}</h1>
       <h2 class="project-tagline">{{ page.description | default: site.description | default: site.github.project_tagline }}</h2>
-      
-      {%- for path in page_paths -%}
-        {%- assign my_page = site.pages | where: "path", path | first -%}
-        {%- if my_page.title -%}
-          <a class="project-tagline" href="{{ my_page.url | relative_url }}">{{ my_page.title | escape }}</a>
-        {%- else -%}
-          <p>Page title not found for path: {{ path }}</p>
-        {%- endif -%}
-      {%- endfor -%}
+
+      <a class="btn" href="{{ "/" | absolute_url }}">Home</a>
+      <a class="btn" href="{{ "/about" | absolute_url }}">About</a>
       
       {% if site.github.is_project_page %}
         <a href="{{ site.github.repository_url }}" class="btn">View on GitHub</a>
       {% endif %}
+
       {% if site.show_downloads %}
         <a href="{{ site.github.zip_url }}" class="btn">Download .zip</a>
         <a href="{{ site.github.tar_url }}" class="btn">Download .tar.gz</a>
